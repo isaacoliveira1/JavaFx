@@ -1,0 +1,5 @@
+package exercise.ifpr;
+
+public class Meses extends Math {
+
+}

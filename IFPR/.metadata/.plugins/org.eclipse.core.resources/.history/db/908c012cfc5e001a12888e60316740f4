@@ -1,0 +1,6 @@
+package exercise.poli.ifpr;
+
+
+public abstract class Livro {
+
+}

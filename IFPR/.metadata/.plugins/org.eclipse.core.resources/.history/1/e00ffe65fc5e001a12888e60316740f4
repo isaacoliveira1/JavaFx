@@ -1,0 +1,11 @@
+package exercise.poli.ifpr;
+
+public class LivroFisico extends Livro {
+
+	@Override
+	public boolean aplicDesc(double por) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

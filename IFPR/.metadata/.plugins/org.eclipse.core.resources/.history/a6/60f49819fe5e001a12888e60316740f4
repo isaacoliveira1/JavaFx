@@ -1,0 +1,16 @@
+package exercise.poli.ifpr;
+
+public class RegistroDeVenda {
+	public static void main (String[] args) {
+		Autor a = new Autor();
+		a.setNome("Antonio");
+		a.setEmail("antonio.ekie@edu.br");
+		a.setCpf("444.333.222-11");
+		LivroFisico fisico = new LivroFisico(null);
+		fisico.setAutor(a);
+		fisico.setNome("Estrela Cadente");
+		fisico.setDesc("Referencia a estrela cadente");
+		fisico.setValor(98);
+		fisico.setIsbn("8412681151516-98");
+	}
+}

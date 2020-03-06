@@ -1,0 +1,7 @@
+package exercise.poli.ifpr;
+
+public class RegistroDeVenda {
+	public static void main (String[] args) {
+		
+	}
+}

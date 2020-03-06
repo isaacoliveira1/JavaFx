@@ -1,0 +1,20 @@
+package exercise.poli.ifpr;
+
+public class Ebook extends Livro {
+
+	
+	public Ebook(Autor autor) {
+		super(autor);
+		// TODO Auto-generated constructor stub
+	}
+
+	public boolean aplicDesc(double por) {
+		if (por > 0.15) {
+		return false;
+		}
+		double desconto = getValor() * por;
+		setValor(getValor() - desconto);
+		return true;
+	}
+
+}

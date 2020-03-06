@@ -1,0 +1,11 @@
+package exercise.poli.ifpr;
+
+public class RegistroDeVenda {
+	public static void main (String[] args) {
+		Autor a = new Autor();
+		a.setNome("Antonio");
+		a.setEmail("antonio.ekie@edu.br");
+		a.setCpf("444.333.222-11");
+		
+	}
+}

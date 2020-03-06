@@ -1,0 +1,7 @@
+package exercise.poli.ifpr;
+
+import exercise.poli.ifpr;
+
+public abstract class Livro extends ifpr {
+
+}

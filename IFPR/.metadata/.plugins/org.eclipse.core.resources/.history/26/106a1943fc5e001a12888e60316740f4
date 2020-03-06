@@ -1,0 +1,20 @@
+package exercise.poli.ifpr;
+
+
+public abstract class Livro {
+	private String nome,desc,isbn;
+	private double valor;
+	private Autor autor;
+	public Livro(Autor autor) {
+		this.autor = autor;
+		this.isbn = isbn;
+	}
+	abstract public boolean aplicDesc(double por);
+	public void mostrarDetalhes() {
+		System.out.println("Nome: "+ nome);
+		System.out.println("Descrição: "+ desc);
+		System.out.println("Valor: "+ valor);
+		System.out.println("ISBN: "+ isbn);
+	}
+	
+}

@@ -1,0 +1,10 @@
+package exercise.ifpr;
+
+public class ActionMath extends Math {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

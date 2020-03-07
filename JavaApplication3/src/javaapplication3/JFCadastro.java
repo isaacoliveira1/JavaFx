@@ -19,12 +19,34 @@ import javax.swing.JOptionPane;
  * @author Desenvolvimento
  */
 public class JFCadastro extends javax.swing.JInternalFrame {
-
+   
    /**
     * Creates new form JFCadastro
     */
    public JFCadastro() {
       initComponents();
+      
+          String txt = "D:\\JavaFX\\JavaApplication3\\estados.txt";
+         try{
+         BufferedReader ler = new BufferedReader(new FileReader(txt));
+         String linha = ler.readLine();
+         int cont = 0;
+         while(linha != null){
+               optionUF.addItem(linha);
+           
+               cont++;
+               
+               ler.readLine();
+            }
+            else
+            {
+               break;
+            }
+            }
+         ler.close();
+         }catch(IOException e){
+            System.err.println("Error");
+         }
    }
 
    /**
@@ -251,24 +273,7 @@ public class JFCadastro extends javax.swing.JInternalFrame {
 
    private void optionUFPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_optionUFPopupMenuWillBecomeVisible
       // TODO add your handling code here:
-               String txt = "D:\\JavaFX\\JavaApplication3\\estados.txt";
-         try{
-         BufferedReader ler = new BufferedReader(new FileReader(txt));
-         String linha = "";
-         while(true){
-            linha = ler.readLine();
-            if (linha != null){
-               optionUF.addItem(linha);
-            }
-            else
-            {
-               break;
-            }
-            }
-         ler.close();
-         }catch(IOException e){
-            System.err.println("Error");
-         }
+
    }//GEN-LAST:event_optionUFPopupMenuWillBecomeVisible
 
 

@@ -7,6 +7,8 @@ package javaapplication3;
 
 
 import com.sun.glass.events.KeyEvent;
+import static com.sun.javafx.util.Utils.contains;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,10 +37,12 @@ public class PainelLogin extends javax.swing.JFrame {
       jMenu2 = new javax.swing.JMenu();
       jLabel1 = new javax.swing.JLabel();
       jLabel2 = new javax.swing.JLabel();
-      jButton1 = new javax.swing.JButton();
+      Sair = new javax.swing.JButton();
       buttonLogar = new javax.swing.JToggleButton();
       username = new javax.swing.JTextField();
       password = new javax.swing.JPasswordField();
+      barrinha = new javax.swing.JProgressBar();
+      Mesg = new javax.swing.JLabel();
 
       jMenu1.setText("jMenu1");
 
@@ -56,14 +60,16 @@ public class PainelLogin extends javax.swing.JFrame {
       jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
       jLabel2.setText("Senha");
 
-      jButton1.setText("Sair");
-      jButton1.addActionListener(new java.awt.event.ActionListener() {
+      Sair.setText("Sair");
+      Sair.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+      Sair.addActionListener(new java.awt.event.ActionListener() {
          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButton1ActionPerformed(evt);
+            SairActionPerformed(evt);
          }
       });
 
       buttonLogar.setText("Logar");
+      buttonLogar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
       buttonLogar.addActionListener(new java.awt.event.ActionListener() {
          public void actionPerformed(java.awt.event.ActionEvent evt) {
             buttonLogarActionPerformed(evt);
@@ -87,30 +93,45 @@ public class PainelLogin extends javax.swing.JFrame {
          }
       });
 
+      barrinha.setForeground(new java.awt.Color(0, 0, 0));
+      barrinha.setBorderPainted(false);
+      barrinha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+      barrinha.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+      barrinha.setName(""); // NOI18N
+      barrinha.setStringPainted(true);
+
+      Mesg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+      Mesg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
       javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
       getContentPane().setLayout(layout);
       layout.setHorizontalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+         .addComponent(barrinha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
          .addGroup(layout.createSequentialGroup()
-            .addGap(20, 20, 20)
+            .addContainerGap(25, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                .addComponent(jLabel1)
                .addComponent(jLabel2))
             .addGap(18, 18, 18)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-               .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                  .addComponent(password, javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGroup(layout.createSequentialGroup()
-                     .addComponent(buttonLogar)
-                     .addGap(20, 20, 20)
-                     .addComponent(jButton1))))
-            .addContainerGap(40, Short.MAX_VALUE))
+               .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(25, Short.MAX_VALUE))
+         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+               .addComponent(Mesg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addGroup(layout.createSequentialGroup()
+                  .addComponent(buttonLogar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                  .addGap(18, 18, 18)
+                  .addComponent(Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGap(43, 43, 43))
       );
       layout.setVerticalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
          .addGroup(layout.createSequentialGroup()
-            .addGap(20, 20, 20)
+            .addContainerGap(20, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                .addComponent(jLabel1)
                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -118,11 +139,14 @@ public class PainelLogin extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                .addComponent(jLabel2)
                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(31, 31, 31)
+            .addGap(18, 18, 18)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-               .addComponent(buttonLogar)
-               .addComponent(jButton1))
-            .addContainerGap(36, Short.MAX_VALUE))
+               .addComponent(buttonLogar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+               .addComponent(Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(Mesg, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(barrinha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
       );
 
       jLabel1.getAccessibleContext().setAccessibleName("username");
@@ -138,10 +162,35 @@ public class PainelLogin extends javax.swing.JFrame {
       if ("isaac.oliveira".equals(p1)){
          String s = password.getText();
          if ("admin123".equals(s)){
-           Menu Console = new Menu();
-           Console.setVisible(true);
-           dispose();
-           JOptionPane.showMessageDialog(rootPane, "Bem-vindo ao sistema "+username.getText());
+
+           new Thread() {
+            public void run(){
+               for (int i=0; i <=100; i++){
+                  if (i <= 25){
+                  Mesg.setText("Preparando o sistema...");
+                  }else if (i<=50){
+                     Mesg.setText("Configurando o sistema ...");
+                  } else if (i<=75 ){
+                     Mesg.setText("Carregando ajustes finais...");
+                  }else if(i<=95){
+                     Mesg.setText("Abrindo o sistema...");
+                  }
+                  try{
+
+                     sleep(10);
+                     barrinha.setValue(i);
+
+                  }catch(Exception msg){
+                     System.err.println("Erro de execução" + msg);
+                  }
+               }
+
+               Menu Console = new Menu();
+                     Console.setVisible(true);
+                     dispose();
+                     JOptionPane.showMessageDialog(rootPane, "Bem-vindo ao sistema "+username.getText());
+            }
+         }.start();
          }
          else if(!"admin123".equals(s)){
             password.setText("");
@@ -163,10 +212,23 @@ public class PainelLogin extends javax.swing.JFrame {
       login();
    }//GEN-LAST:event_buttonLogarActionPerformed
 
-   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+   private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
       // TODO add your handling code here:
-      System.exit(0);
-   }//GEN-LAST:event_jButton1ActionPerformed
+      String palavra = "IFPR 123 ";
+      String senha = "";
+      String usuario = "";
+      int tam = palavra.length();
+      //
+      //senha = palavra.substring(5, 8);
+      //System.out.println("Usuário: "+ usuario+ "\nSenha: "+senha);]
+      String[] a = palavra.split(" ");
+      System.out.println(Arrays.toString(palavra.split(" ")));
+      usuario = a[0];
+      senha = a[1];
+      System.out.println(usuario);
+      System.out.println(senha);
+
+   }//GEN-LAST:event_SairActionPerformed
 
    private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed
       // TODO add your handling code here:
@@ -230,8 +292,10 @@ public class PainelLogin extends javax.swing.JFrame {
    }
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
+   private javax.swing.JLabel Mesg;
+   private javax.swing.JButton Sair;
+   private javax.swing.JProgressBar barrinha;
    private javax.swing.JToggleButton buttonLogar;
-   private javax.swing.JButton jButton1;
    private javax.swing.JLabel jLabel1;
    private javax.swing.JLabel jLabel2;
    private javax.swing.JMenu jMenu1;
@@ -239,4 +303,8 @@ public class PainelLogin extends javax.swing.JFrame {
    private javax.swing.JPasswordField password;
    private javax.swing.JTextField username;
    // End of variables declaration//GEN-END:variables
+
+   private void contains(String _) {
+      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   }
 }

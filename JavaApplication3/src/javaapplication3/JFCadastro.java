@@ -19,31 +19,29 @@ import javax.swing.JOptionPane;
  * @author Desenvolvimento
  */
 public class JFCadastro extends javax.swing.JInternalFrame {
-   
+
    /**
     * Creates new form JFCadastro
     */
    public JFCadastro() {
       initComponents();
-      
-          String txt = "D:\\JavaFX\\JavaApplication3\\estados.txt";
+
+               String txt = "D:\\JavaFX\\JavaApplication3\\estados.txt";
          try{
          BufferedReader ler = new BufferedReader(new FileReader(txt));
          String linha = ler.readLine();
          int cont = 0;
          while(linha != null){
+            cont ++;
+            if (linha.equals(optionUF.getSelectedIndex())){
+               JOptionPane.showMessageDialog(rootPane, "Estado: " + cont);
+            }
+
                optionUF.addItem(linha);
-           
-               cont++;
-               
-               ler.readLine();
-            }
-            else
-            {
-               break;
-            }
+               linha = ler.readLine();
             }
          ler.close();
+
          }catch(IOException e){
             System.err.println("Error");
          }
@@ -124,6 +122,11 @@ public class JFCadastro extends javax.swing.JInternalFrame {
       jLabel6.setText("Cidade");
 
       txtCidade.setToolTipText("");
+      txtCidade.addFocusListener(new java.awt.event.FocusAdapter() {
+         public void focusLost(java.awt.event.FocusEvent evt) {
+            txtCidadeFocusLost(evt);
+         }
+      });
       txtCidade.addActionListener(new java.awt.event.ActionListener() {
          public void actionPerformed(java.awt.event.ActionEvent evt) {
             txtCidadeActionPerformed(evt);
@@ -263,9 +266,10 @@ public class JFCadastro extends javax.swing.JInternalFrame {
         Cliente.setUF(optionUF.getSelectedItem().toString());
       } else{
                   optionUF.requestFocus();
+
       }
             System.out.println("" + Cliente);
-      JOptionPane.showMessageDialog(rootPane, "Conta criada", "Suceso!", 1);
+      JOptionPane.showMessageDialog(rootPane, "Conta criada", "Sucesso!", 1);
       dispose();
 
 
@@ -273,8 +277,16 @@ public class JFCadastro extends javax.swing.JInternalFrame {
 
    private void optionUFPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_optionUFPopupMenuWillBecomeVisible
       // TODO add your handling code here:
-
    }//GEN-LAST:event_optionUFPopupMenuWillBecomeVisible
+
+   private void txtCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusLost
+      // TODO add your handling code here:
+          if ("Londrina".equals(txtCidade.getText())){
+
+         optionUF.setSelectedItem("PR");
+
+      }
+   }//GEN-LAST:event_txtCidadeFocusLost
 
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
